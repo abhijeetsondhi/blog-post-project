@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "blog_app/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="centerstage">
+  {% for use in user_list %}
+  {% if request.user.username == use.username %}
+  <h1>{{ use.username }}</h1>
+  {% else %}
+  <h1><a href="{% url 'blog_app:add_frnd'  pk=use.pk %}">{{ use.username }}</a></h1>
+  {% endif %}
+  {% endfor %}
+</div>
+Friend List for <a href="{% url 'blog_app:frnd_list'  pk=request.user.pk %}">{{ request.user.username }}</a>:
+{% endblock %}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends "blog_app/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container">
+Friend List for {{ request.user.username }}:
+{% for fr in frnds %}
+<h1> <a href="{% url 'blog_app:user_prof'  pk=fr.pk %}">{{ fr.username }} {{ fr.pk }}</a></h1>
+{% endfor %}
+</div>
+{% endblock %}

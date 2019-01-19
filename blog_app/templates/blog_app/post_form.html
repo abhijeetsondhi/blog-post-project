@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "blog_app/base.html" %}
+{% block content %}
+<div class='jumbotron'>
+  <h3> MC likh abhi</h3>
+  {% if form.errors %}
+    <p>Galat hai bhai!</p>
+  {% endif %}
+  <form method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+  <input type='submit' class="btn btn-primary" value="Post">
+  <input type='hidden' name="next" value="{{next}}">
+  </form>
+
+</div>
+{% endblock %}

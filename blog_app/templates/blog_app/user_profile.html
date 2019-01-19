@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "blog_app/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="centerstage">
+  <h1>{{ user.username }}</h1>
+  {% if pp.profile_pic == null %}
+  <form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_1.as_p }}
+    <input type='submit' value='Upload'>
+  </form>
+  {% else %}
+  <img src="{{ pp.profile_pic.url }}" width="240">
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load staticfiles }
+{% extends "blog_app/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="centerstage">
+  {% for post in post_list %}  <!-- 'post' is modelname and list is appended -->
+  {% for fr in friends %}
+  {% if post.author.username == fr.username %}
+  <h1><a href="{% url 'blog_app:blog_post' pk=post.pk %}">{{ post.title }}</a></h1>
+    <div class='disp_date'>
+    <p>  Published at: {{ post.published_date }}</p>
+    <p> Created By : {{ post.author }} </p>
+    {% endif %}
+    {% endfor %}
+  {% endfor %}
+    </div>
+</div>
+{% else %}
+{% endif %}
+{% endblock %}
